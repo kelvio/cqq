@@ -1,0 +1,2 @@
+class Banca < ActiveRecord::Base
+end

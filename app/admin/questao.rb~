@@ -1,0 +1,41 @@
+ActiveAdmin.register Questao do
+
+
+  menu :label => 'Questões'
+  
+  permit_params :texto, :concurso_id, :cargo_id, :disciplina_id, alternativas_attributes:[:texto]
+  
+  # See permitted parameters documentation:
+  # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
+  #
+  # permit_params :list, :of, :attributes, :on, :model
+  #
+  # or
+  #
+  # permit_params do
+  #  permitted = [:permitted, :attributes]
+  #  permitted << :other if resource.something?
+  #  permitted
+  # end
+  
+  form do |f|    
+
+    f.inputs do
+    
+      f.input :concurso
+      f.input :cargo
+      f.input :disciplina
+      f.input :texto, :as => :text
+#      f.input :comentario
+    end
+      
+    f.has_many :alternativas do |t|
+        t.input :texto, :as => :text
+        t.input :opcao_correta
+        t.input :observacao, :as => :text
+    end      
+     
+    f.actions # Include the default actions
+  end
+  
+end

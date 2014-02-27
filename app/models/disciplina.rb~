@@ -1,0 +1,7 @@
+class Disciplina < ActiveRecord::Base
+
+  def to_s
+    return self.noem
+  end
+
+end
